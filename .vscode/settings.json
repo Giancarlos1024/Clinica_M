@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": [
+      "activation.jar",
+      "caelum-stella-core-2.1.2.jar",
+      "dom4j-1.6.1.jar",
+      "jcalendar-1.4.jar",
+      "mail.jar",
+      "postgresql-42.2.5.jar"
+    ]
+  }
+  
