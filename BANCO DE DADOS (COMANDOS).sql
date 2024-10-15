@@ -1,59 +1,50 @@
-create table administrador(
+CREATE DATABASE clinica_medica;
 
-login varchar(100) primary key,
-senha varchar(100)
+USE clinica_medica;
 
+CREATE TABLE administrador (
+    login VARCHAR(100) PRIMARY KEY,
+    senha VARCHAR(100)
 );
 
-create table Paciente(
-
-idPaciente serial primary key,
-nome varchar(100) ,
-cpf varchar(15) UNIQUE, 
-endereco varchar(100),
-Email varchar(100)
-
+CREATE TABLE Paciente (
+    idPaciente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cpf VARCHAR(15) UNIQUE,
+    endereco VARCHAR(100),
+    Email VARCHAR(100)
 );
 
-create table Medico(
-
-idMedico serial primary key,
-nome varchar(100) ,
-cpf varchar(15) UNIQUE,
-especialidade varchar(100),
-email varchar(100),
-sexo varchar(50)
-
-
+CREATE TABLE Medico (
+    idMedico INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cpf VARCHAR(15) UNIQUE,
+    especialidade VARCHAR(100),
+    email VARCHAR(100),
+    sexo VARCHAR(50)
 );
 
-
-create table Agenda(
-idAgenda serial primary key,
-procedimento  varchar(50),
-horario varchar(50),
-data varchar (50),
-
-id_Medico int,
-
-id_Paciente int,
-
-FOREIGN KEY(id_Medico) 
-REFERENCES Medico(idMedico),
-
-FOREIGN KEY(id_Paciente) 
-REFERENCES Paciente(idPaciente) 
-
+CREATE TABLE Agenda (
+    idAgenda INT AUTO_INCREMENT PRIMARY KEY,
+    procedimento VARCHAR(50),
+    horario VARCHAR(50),
+    data VARCHAR(50),
+    id_Medico INT,
+    id_Paciente INT,
+    FOREIGN KEY (id_Medico) REFERENCES Medico(idMedico),
+    FOREIGN KEY (id_Paciente) REFERENCES Paciente(idPaciente)
 );
 
+INSERT INTO administrador (login, senha) VALUES ('admin', 'admin');
 
 
-insert into administrador (login,senha) values ('admin','admin');
+SELECT * FROM paciente;
+SELECT * FROM administrador;
+SELECT * FROM agenda;
+SELECT * FROM medico;
 
 
-select agenda.horario,paciente.nome, medico.nome, agenda.procedimento, agenda.data from paciente,medico,agenda
-
-where idpaciente=Id_paciente and idMedico = id_medico;
 
 
-select login from administrador where =?
+
+
